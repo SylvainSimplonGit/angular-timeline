@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { TimelineListComponent } from './timeline-list/timeline-list.component';
+import { TimelineComponent } from './timeline/timeline.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
-    TimelineListComponent
+    TimelineListComponent,
+    TimelineComponent
   ],
   imports: [
     BrowserModule,

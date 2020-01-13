@@ -1,1 +1,32 @@
-<p>timeline-list works!</p>
+<div>
+  <button>Ajouter un timeline</button>
+</div>
+
+<section id="table-view">
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nom</th>
+				<th>Catégorie</th>
+				<th>Date de création</th>
+        <th>Date de mise à jour</th>
+        <th>Nombre de cartes</th>
+        <th>Editer ?</th>
+        <th>Jouer ?</th>
+        <th>Supprimer ?</th>
+			</tr>
+		</thead>
+		<tr *ngFor="let item of timelines; let i = index">
+			<td>{{ item.id }}</td>
+			<td>{{ item.name }}</td>
+			<td>{{ item.category }}</td>
+			<td>{{ item.creationDate }}</td>
+			<td>{{ item.updateDate }}</td>
+			<td>{{ item.cardList.length }}</td>
+			<!-- <td><button (click)="edit(i)">Editer</button></td> -->
+			<!-- <td><button (click)="jouer(i)">Jouer</button></td> -->
+			<td><button (click)="timelines.splice(i, 1)">Supprimer</button></td>
+		</tr>
+	</table>
+</section>
