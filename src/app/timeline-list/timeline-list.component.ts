@@ -17,7 +17,7 @@ export class TimelineListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.timelines = this.timelineService.getItems();
+    this.timelines = this.timelineService.getTimelines();
   }
 
   edit(timeline) {

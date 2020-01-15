@@ -86,11 +86,11 @@ export class TimelineService {
     this.items = this.timelines;
   }
 
-  getItems() {
+  getTimelines() {
     return this.items;
   }
 
-  addItem(item: Timeline){
+  addItem(item: Timeline) {
     this.items.push(item);
   }
 
