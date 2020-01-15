@@ -50,7 +50,9 @@ export class TimelineComponent implements OnInit {
     // Test si l'année entrée et identique à l'année de la carte
     if (yearGuess === yearMatch) {
       this.cardService.findCard(card);
-      this.cardsFounded = this.cardService.getCardsFounded();
+      this.sortCardsFounded();
+      // Pas besoin car les 2 tableaux ont été initialisés en pointant sur la même référnce
+      // this.cardsFounded = this.cardService.getCardsFounded();
       if (!this.haveNoCardInUnfounded()) {
         this.cardGuess = this.cardService.getRandomCard();
       }
@@ -61,5 +63,17 @@ export class TimelineComponent implements OnInit {
 
   haveNoCardInUnfounded(): boolean {
     return !(this.cardsUnfounded.length > 0);
+  }
+
+  sortCardsFounded() {
+    this.cardsFounded.sort((card1, card2) => {
+      if (card1.date > card2.date) {
+        return 1;
+      } else if (card1.date < card2.date) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
   }
 }
