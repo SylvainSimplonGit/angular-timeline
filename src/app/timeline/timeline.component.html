@@ -1,7 +1,7 @@
 <div>
-  <input #dateInput [ngClass]="dynamicClass" type="text" placeholder="Entrez la date">
-  <button (click)="guessCard(cardGuess)" [disabled]="haveNoCardInUnfounded()">DEVINER</button>
   <div [hidden]="haveNoCardInUnfounded()">
+    <input #dateInput [ngClass]="dynamicClass" type="text" placeholder="Entrez la date">
+    <button (click)="guessCard(cardGuess)">DEVINER</button>
     <h2>Carte à deviner du timeline n° {{ idCurrentTimeline }}</h2>
     <div id="deckCardsUnfounded" class="cards">
       <div class="headerCard">
@@ -16,6 +16,10 @@
     </div>
   </div>
 </div>
+
+<div [hidden]="!haveNoCardInUnfounded()">
+  <img src="./assets/firework.gif" alt="">
+</div >
 
 <h2>Cartes trouvées</h2>
 <div id="deckCardsFounded">
