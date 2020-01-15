@@ -58,6 +58,7 @@ export class TimelineComponent implements OnInit {
         this.cardGuess = this.cardService.getRandomCard();
       }
       this.dynamicClass = '';
+      this.dateInput.nativeElement.value = '';
     } else {
       this.dynamicClass = 'error';
     }
