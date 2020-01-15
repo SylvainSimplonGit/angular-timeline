@@ -1,5 +1,5 @@
 <div>
-  <input type="text" placeholder="Entrez la date">
+  <input #dateInput type="text" placeholder="Entrez la date">
   <button (click)="guessCard(cardGuess)" [disabled]="haveNoCardInUnfounded()">DEVINER</button>
   <div id="cardGuess" [hidden]="haveNoCardInUnfounded()">
     <h2>Carte à deviner du timeline n° {{ idCurrentTimeline }}</h2>

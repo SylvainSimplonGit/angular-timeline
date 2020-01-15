@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ViewChild, ElementRef } from '@angular/core';
 import { Card } from '../card';
 import { CardService } from '../card.service';
 import { ActivatedRoute } from '@angular/router';
@@ -10,6 +11,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./timeline.component.css']
 })
 export class TimelineComponent implements OnInit {
+
+  @ViewChild('dateInput', {static: false}) dateInput: ElementRef;
 
   cardGuess: Card;
   cardsFounded: Card[];
@@ -42,6 +45,7 @@ export class TimelineComponent implements OnInit {
     }
     console.log('Taille de cardsFounded après findCard : ' + this.cardsFounded.length);
     console.log('Taille de cardsUnfounded après findCard : ' + this.cardsUnfounded.length);
+    console.log('Date : ', this.dateInput.nativeElement.value);
   }
 
   haveNoCardInUnfounded(): boolean {
