@@ -1,7 +1,7 @@
-<div>
-  <div [hidden]="haveNoCardInUnfounded()">
-    <input #dateInput [ngClass]="dynamicClass" type="text" placeholder="Entrez la date">
-    <button (click)="guessCard(cardGuess)">DEVINER</button>
+  <div class="formGuessCard" [hidden]="haveNoCardInUnfounded()">
+    <input #dateInput [ngClass]="dynamicClass" type="text" placeholder="Entrez la date"
+      (keydown)="onKeydown($event, cardGuess)">
+    <button id="buttonGuess" (click)="guessCard(cardGuess)">DEVINER</button>
     <h2>Carte à deviner du timeline n° {{ idCurrentTimeline }}</h2>
     <div id="deckCardsUnfounded" class="cards">
       <div class="headerCard">
@@ -15,24 +15,24 @@
       </div>
     </div>
   </div>
-</div>
 
-<div [hidden]="!haveNoCardInUnfounded()">
-  <img src="./assets/firework.gif" alt="">
-</div >
+  <div class="firework" [hidden]="!haveNoCardInUnfounded()">
+    <img src="./assets/firework.gif" alt="">
+  </div>
 
-<h2>Cartes trouvées</h2>
-<div id="deckCardsFounded">
-  <div class="cards" *ngFor="let card of cardsFounded">
-    <div class="headerCard">
-      <h3>{{ card.name }}</h3>
-      <h4>{{ card.date | date : 'yyyy'}}</h4>  
-    </div>
-    <div class="imageCard">
-      <img src="{{ card.imageUrl }}" alt="Carte trouvée n°{{ card.id }}">
-    </div>
-    <div class="descriptionCard">
-      <p>{{ card.description }}</p>
+  
+  <h2>{{ cardsFounded.length }} Cartes trouvées</h2>
+  <div id="deckCardsFounded">
+    <div class="cards" *ngFor="let card of cardsFounded">
+      <div class="headerCard">
+        <h3>{{ card.name }}</h3>
+        <h4>{{ card.date | date : 'yyyy'}}</h4>
+      </div>
+      <div class="imageCard">
+        <img src="{{ card.imageUrl }}" alt="Carte trouvée n°{{ card.id }}">
+      </div>
+      <div class="descriptionCard">
+        <p>{{ card.description }}</p>
+      </div>
     </div>
   </div>
-</div>

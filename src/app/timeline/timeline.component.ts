@@ -81,4 +81,10 @@ export class TimelineComponent implements OnInit {
       }
     });
   }
+
+  onKeydown(event, card) {
+    if (event.key === 'Enter') {
+      this.guessCard(card);
+    }
+  }
 }
