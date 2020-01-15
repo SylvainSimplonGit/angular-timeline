@@ -1,17 +1,17 @@
 <div>
   <input type="text" placeholder="Entrez la date">
-  <button (click)="guessCard(cardGuess)">DEVINER</button>
-  <h2>Carte à deviner</h2>
-  <div id="cardGuess">
+  <button (click)="guessCard(cardGuess)" [disabled]="haveNoCardInUnfounded()">DEVINER</button>
+  <div id="cardGuess" [hidden]="haveNoCardInUnfounded()">
+    <h2>Carte à deviner du timeline n° {{ idCurrentTimeline }}</h2>
     <h3>{{ cardGuess.name }}</h3>
     <img src="{{ cardGuess.imageUrl }}" alt="Carte à deviner">
     <p>{{ cardGuess.description }}</p>
   </div>
 </div>
 
+<h2>Cartes trouvées</h2>
 <div id="cardsFounded">
-  <h2>Cartes trouvées</h2>
-  <div *ngFor="let card of cardsFounded">
+  <div class="cards" *ngFor="let card of cardsFounded">
     <h3>{{ card.name }}</h3>
     <img src="{{ card.imageUrl }}" alt="Carte trouvée n°{{ card.id }}">
     <p>{{ card.description }}</p>

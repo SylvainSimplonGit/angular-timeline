@@ -1,0 +1,17 @@
+button:disabled {
+  color: red;
+}
+
+img {
+  width: 200px;
+}
+
+#cardsFounded {
+  display: flex;
+  flex-direction: row;
+}
+
+.cards {
+
+  border: 1px solid black;
+}
