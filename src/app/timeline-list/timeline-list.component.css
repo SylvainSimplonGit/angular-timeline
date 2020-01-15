@@ -1,3 +1,7 @@
+.list {
+  margin: 10px;
+}
+
 #table-view {
   display: flex;
   flex-direction: row;
@@ -7,11 +11,20 @@
 table,
 th,
 td {
-  border: 1px solid black;
+  border: 1px solid var(--color-text-secondary);
   border-collapse: collapse;
+  background-color: var(--color-text-primary);
 }
 
 th, td {
   padding: 5px;
 }
 
+button {
+  background-color: var(--color-secondary);
+  color: var(--color-text-primary);
+}
+
+#buttonAdd {
+  margin: 5px;
+}

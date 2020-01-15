@@ -1,10 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --color-primary: #1b262c;
+  --color-secondary: #0f4c75;
+  --color-text-primary: #bbe1fa;
+  --color-text-secondary: #3282b8;
+}
+
 * {
   font-family: 'Roboto', Arial, sans-serif;
-  color: #616161;
+  color: var(--color-text-secondary);
   box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--color-primary);
 }
  
 .container {

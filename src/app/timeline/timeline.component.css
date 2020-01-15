@@ -1,7 +1,3 @@
-button:disabled {
-  color: red;
-}
-
 img {
   margin: 5px;
   max-width: 100%;
@@ -10,36 +6,49 @@ img {
 
 #deckCardsFounded {
   display: flex;
+  /* Affiche les cartes en ligne */
   flex-direction: row;
+  /* Aligne au centre de la div*/
   align-items: center;
   justify-content: center;
+  /* Permet de passer à la ligne en fonction de la taille d'écran */
   flex-wrap: wrap;
 }
 
 #deckCardsUnfounded {
+  /* Centre la carte à deviner */
   margin: auto;
+  margin-top: 10px;
+}
+
+.formGuessCard {
+  margin-top: 10px;
 }
 
 .cards {
-  background-color: beige;
+  background-color: var(--color-text-primary);
   
   width: 200px;
   height: 300px;
   
-  border: thick double #32a1ce;
+  border: thick double var(--color-text-secondary);
   border-radius: 1rem;
   margin: 2px;
-  
+  /* Permet d'utiliser les propriété Flex */
   display: flex;
+  /* Affiche les informations de la carte (nom, date, image et description) en colonne */
   flex-direction: column;
+  /* Utilise tout l'espace en répartissant les div */
   justify-content: space-between;
 }
 
 .headerCard {
+  /* Utilise 2 parts de la colonne séparée en 5 */
   flex-grow: 2;
 }
 
 .imageCard {
+  /* Utilise 2 parts de la colonne séparée en 5 */
   flex-grow: 2;
   width: 90%;
   height: 50%;
@@ -47,14 +56,22 @@ img {
 }
 
 .descriptionCard {
+  /* Utilise 1 parts de la colonne séparée en 5 */
   flex-grow: 1;
   font-size: 0.8rem;
 }
 
+#buttonGuess {
+  background-color: var(--color-secondary);
+  color: var(--color-text-primary);
+}
+
 input {
+  /* Centre le texte de l'input */
   text-align: center;
 }
 
+/* Fait vibrer le texte de l'input en cas de mauvaise réponse */
 input.error {
   animation-name: shakeAnim;
   position: relative;
@@ -62,7 +79,9 @@ input.error {
   animation-iteration-count: infinite;
   animation-timing-function: ease-in;
   cursor: pointer;
-  border-color: red;
+  background-color: red;
+  color: var(--color-text-primary);
+  border: 2px;
 }
 
 @keyframes shakeAnim {
@@ -74,4 +93,9 @@ input.error {
   5% {left: -5px}
   6% {left: 3px}
   7% {left: 0}
+}
+/* Fin de l'input vibrant */
+
+.firework {
+  background-color: black;
 }
