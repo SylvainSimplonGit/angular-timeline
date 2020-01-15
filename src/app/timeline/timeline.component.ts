@@ -35,17 +35,27 @@ export class TimelineComponent implements OnInit {
   }
 
   guessCard(card: Card) {
+    // Converti la date de l'input en number
+    const yearGuess: number = +this.dateInput.nativeElement.value;
+    // Converti la date de la carte en Date
+    const dateMatch: Date = new Date(card.date);
+    // Récupère l'année de la date de la carte
+    const yearMatch: number = dateMatch.getFullYear();
+    console.log('yearGuess : ', yearGuess);
+    console.log('yearMatch : ', yearMatch);
     console.log('guessCard : ');
     console.log('Taille de cardsFounded avant findCard : ' + this.cardsFounded.length);
     console.log('Taille de cardsUnfounded avant findCard : ' + this.cardsUnfounded.length);
-    this.cardService.findCard(card);
-    this.cardsFounded = this.cardService.getCardsFounded();
-    if (!this.haveNoCardInUnfounded()) {
-      this.cardGuess = this.cardService.getRandomCard();
+    // Test si l'année entrée et identique à l'année de la carte
+    if (yearGuess === yearMatch) {
+      this.cardService.findCard(card);
+      this.cardsFounded = this.cardService.getCardsFounded();
+      if (!this.haveNoCardInUnfounded()) {
+        this.cardGuess = this.cardService.getRandomCard();
+      }
     }
     console.log('Taille de cardsFounded après findCard : ' + this.cardsFounded.length);
     console.log('Taille de cardsUnfounded après findCard : ' + this.cardsUnfounded.length);
-    console.log('Date : ', this.dateInput.nativeElement.value);
   }
 
   haveNoCardInUnfounded(): boolean {
