@@ -13,6 +13,7 @@
 <div id="cardsFounded">
   <div class="cards" *ngFor="let card of cardsFounded">
     <h3>{{ card.name }}</h3>
+    <h4>{{ card.date | date : 'yyyy'}}</h4>
     <img src="{{ card.imageUrl }}" alt="Carte trouvée n°{{ card.id }}">
     <p>{{ card.description }}</p>
   </div>
