@@ -1,5 +1,5 @@
 <div>
-  <button>Ajouter un timeline</button>
+  <button (click)="addTimeline()">Ajouter un timeline</button>
 </div>
 
 <section id="table-view">
@@ -24,8 +24,8 @@
 			<td>{{ item.creationDate }}</td>
 			<td>{{ item.updateDate }}</td>
 			<td>{{ item.cardList.length }}</td>
-			<!-- <td><button (click)="edit(i)">Editer</button></td> -->
-			<!-- <td><button (click)="jouer(i)">Jouer</button></td> -->
+			<td><button (click)="edit(item)">Editer</button></td>
+			<td><button [routerLink]="['/timeline', item.id]" *ngIf="item.cardList.length > 0">Jouer</button></td>
 			<td><button (click)="timelines.splice(i, 1)">Supprimer</button></td>
 		</tr>
 	</table>

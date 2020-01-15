@@ -1,6 +1,5 @@
-import {
-  Injectable
-} from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Timeline } from './timeline';
 
 @Injectable({
   providedIn: 'root'
@@ -90,4 +89,9 @@ export class TimelineService {
   getItems() {
     return this.items;
   }
+
+  addItem(item: Timeline){
+    this.items.push(item);
+  }
+
 }

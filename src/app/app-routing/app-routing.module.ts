@@ -6,8 +6,8 @@ import { TimelineComponent } from '../timeline/timeline.component';
 
 const routes: Routes = [
   { path: '', component: TimelineListComponent},
-  { path: 'timeline', component: TimelineComponent}
-]
+  { path: 'timeline/:timelineId', component: TimelineComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
