@@ -50,3 +50,28 @@ img {
   flex-grow: 1;
   font-size: 0.8rem;
 }
+
+input {
+  text-align: center;
+}
+
+input.error {
+  animation-name: shakeAnim;
+  position: relative;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in;
+  cursor: pointer;
+  border-color: red;
+}
+
+@keyframes shakeAnim {
+  0% {left: 0}
+  1% {left: -3px}
+  2% {left: 5px}
+  3% {left: -8px}
+  4% {left: 8px}
+  5% {left: -5px}
+  6% {left: 3px}
+  7% {left: 0}
+}

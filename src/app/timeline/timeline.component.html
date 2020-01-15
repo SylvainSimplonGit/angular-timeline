@@ -1,5 +1,5 @@
 <div>
-  <input #dateInput type="text" placeholder="Entrez la date">
+  <input #dateInput [ngClass]="dynamicClass" type="text" placeholder="Entrez la date">
   <button (click)="guessCard(cardGuess)" [disabled]="haveNoCardInUnfounded()">DEVINER</button>
   <div [hidden]="haveNoCardInUnfounded()">
     <h2>Carte à deviner du timeline n° {{ idCurrentTimeline }}</h2>

@@ -19,6 +19,7 @@ export class TimelineComponent implements OnInit {
   cardsUnfounded: Card[];
   // nbCardsMax: number;
   idCurrentTimeline: number;
+  dynamicClass = '';
 
   constructor(
     private cardService: CardService,
@@ -56,6 +57,9 @@ export class TimelineComponent implements OnInit {
       if (!this.haveNoCardInUnfounded()) {
         this.cardGuess = this.cardService.getRandomCard();
       }
+      this.dynamicClass = '';
+    } else {
+      this.dynamicClass = 'error';
     }
     console.log('Taille de cardsFounded après findCard : ' + this.cardsFounded.length);
     console.log('Taille de cardsUnfounded après findCard : ' + this.cardsUnfounded.length);
