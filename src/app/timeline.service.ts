@@ -81,6 +81,7 @@ export class TimelineService {
   ];
 
   items = [];
+  timeline: Timeline;
 
   constructor() {
     this.items = this.timelines;
@@ -92,6 +93,15 @@ export class TimelineService {
 
   addItem(item: Timeline) {
     this.items.push(item);
+  }
+
+  setTimeline(item: Timeline){
+    this.timeline = item;
+  }
+
+  getTimeline(){
+    console.log('edit -> ', this.timeline.name);
+    return this.timeline;
   }
 
 }

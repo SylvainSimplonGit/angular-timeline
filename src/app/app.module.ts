@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { TimelineListComponent } from './timeline-list/timeline-list.component';
 import { TimelineComponent } from './timeline/timeline.component';
+import { TimelineEditComponent } from './timeline-edit/timeline-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopBarComponent,
     TimelineListComponent,
-    TimelineComponent
+    TimelineComponent,
+    TimelineEditComponent
   ],
   imports: [
     BrowserModule,

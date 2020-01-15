@@ -21,12 +21,13 @@ export class TimelineListComponent implements OnInit {
   }
 
   edit(timeline) {
+    this.timelineService.setTimeline(timeline);
     console.log('Edit : ' + timeline.name);
   }
 
-  play(timeline) {
-    console.log('Play : ' + timeline.name);
-  }
+  // play(timeline) {
+  //   console.log('Play : ' + timeline.name);
+  // }
 
   addTimeline() {
     // TODO

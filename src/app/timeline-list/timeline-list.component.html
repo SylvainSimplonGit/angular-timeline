@@ -25,7 +25,8 @@
         <td>{{ item.creationDate | date : 'dd/MM/yyyy' }}</td>
         <td>{{ item.updateDate  | date : 'dd/MM/yyyy' }}</td>
         <td>{{ item.cardList.length }}</td>
-        <td><button (click)="edit(item)">Editer</button></td>
+        <!-- <td><button (click)="edit(item)" [routerLink]="['/edit', item.id]">Editer</button></td> -->
+        <td><button (click)="edit(item)" [routerLink]="['/edit']">Editer</button></td>
         <td><button [routerLink]="['/timeline', item.id]" *ngIf="item.cardList.length > 0">Jouer</button></td>
         <td><button (click)="timelines.splice(i, 1)">Supprimer</button></td>
       </tr>
