@@ -26,12 +26,12 @@ img {
 }
 
 .cards {
-  background-color: var(--color-text-primary);
+  background-color: var(--color-lighter);
   
   width: 200px;
   height: 300px;
   
-  border: thick double var(--color-text-secondary);
+  border: thick double var(--color-light);
   border-radius: 1rem;
   margin: 2px;
   /* Permet d'utiliser les propriété Flex */
@@ -62,8 +62,8 @@ img {
 }
 
 #buttonGuess {
-  background-color: var(--color-secondary);
-  color: var(--color-text-primary);
+  background-color: var(--color-dark);
+  color: var(--color-lighter);
 }
 
 input {
@@ -80,7 +80,7 @@ input.error {
   animation-timing-function: ease-in;
   cursor: pointer;
   background-color: red;
-  color: var(--color-text-primary);
+  color: var(--color-lighter);
   border: 2px;
 }
 

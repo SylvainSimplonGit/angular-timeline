@@ -8,11 +8,11 @@ button {
 }
 
 .top-bar {
-  background-color: var(--color-text-primary);
+  background-color: var(--color-lighter);
   padding: 5px;
 }
 
 #buttonList {
-  background-color: var(--color-secondary);
-  color: var(--color-text-primary);
+  background-color: var(--color-dark);
+  color: var(--color-lighter);
 }

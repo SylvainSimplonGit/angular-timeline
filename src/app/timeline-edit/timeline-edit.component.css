@@ -11,9 +11,9 @@
 table,
 th,
 td {
-  border: 1px solid var(--color-text-secondary);
+  border: 1px solid var(--color-light);
   border-collapse: collapse;
-  background-color: var(--color-text-primary);
+  background-color: var(--color-lighter);
 }
 
 th, td {
@@ -21,8 +21,8 @@ th, td {
 }
 
 button {
-  background-color: var(--color-secondary);
-  color: var(--color-text-primary);
+  background-color: var(--color-dark);
+  color: var(--color-lighter);
 }
 
 #buttonAdd {
