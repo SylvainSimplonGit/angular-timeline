@@ -94,11 +94,11 @@ export class CardService {
     console.log(this.cardsFounded);
     console.log('cardsUnfounded : ');
     console.log(this.cardsUnfounded);
-    
+
     this.cardsFounded.push(card);
     const index = this.cardsUnfounded.indexOf(card);
     this.cardsUnfounded.splice(index, 1);
-    
+
     console.log('cardsFounded : ');
     console.log(this.cardsFounded);
     console.log('cardsUnfounded : ');

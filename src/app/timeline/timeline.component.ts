@@ -43,6 +43,7 @@ export class TimelineComponent implements OnInit {
     const yearMatch: number = dateMatch.getFullYear();
     console.log('yearGuess : ', yearGuess);
     console.log('yearMatch : ', yearMatch);
+
     console.log('guessCard : ');
     console.log('Taille de cardsFounded avant findCard : ' + this.cardsFounded.length);
     console.log('Taille de cardsUnfounded avant findCard : ' + this.cardsUnfounded.length);
