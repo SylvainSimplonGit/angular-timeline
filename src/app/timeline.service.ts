@@ -108,4 +108,14 @@ export class TimelineService {
     return this.timeline;
   }
 
+  getMaxId() {
+    let maxId = 0;
+    for (const card of this.timeline.cardList) {
+      if (maxId < card.id) {
+        maxId = card.id;
+      }
+    }
+    return maxId + 1;
+  }
+
 }
