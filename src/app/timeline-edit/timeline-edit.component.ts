@@ -12,11 +12,11 @@ export class TimelineEditComponent implements OnInit {
   cards: Card[];
 
   constructor(
-    private timelinService: TimelineService,
+    private timelineService: TimelineService,
   ) { }
 
   ngOnInit() {
-    this.cards = this.timelinService.getTimeline().cardList;
+    this.cards = this.timelineService.getTimeline().cardList;
   }
 
 }
