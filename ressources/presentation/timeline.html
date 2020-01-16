@@ -285,19 +285,31 @@ import { ViewChild, ElementRef } from '@angular/core';
 ...
 @ViewChild(
   'dateInput', {static: false}
-  ) dateInput: ElementRef;
+  ) dateInputRequest: ElementRef;
 ...
 const yearGuess: number = 
-  +this.dateInput.nativeElement.value;
+  +this.dateInputRequest.nativeElement.value;
 ...
-this.dateInput.nativeElement.value = '';
+this.dateInputRequest.nativeElement.value = '';
 ```
 ]
 ]
 
 ???
 
-# Sylvain
+# Yves
+
+viewChild est un decorator qui créé une vue ou une requête DOM.
+
+Le DOM est surveillé et tout changement d'un element surveillé dans le DOM permet la récupération de cet objet.
+
+static : false n'attend pas la résolution de la requête avant l'exécution de la détection des modifications.
+
+dateInput : element du DOM surveillé
+
+dateInputRequest : Objet qui permet de récupérer et modifier les attributs de l'objet du DOM
+
+[Tutorial](https://www.techiediaries.com/angular-dom-queries-viewchild/)
 
 ---
 
