@@ -327,11 +327,16 @@ haveNoCardInUnfounded(): boolean {
 
 ???
 
-// Converti la date de l'input en number
-// Converti la date de la carte en Date
-// Converti la date de la carte en Date
-// Récupère l'année de la date de la carte
-// Test si l'année entrée et identique à l'année de la carte
+##### Convertir la date de l'input en number
+const yearGuess: number = +this.dateInput.nativeElement.value;
+##### Converti la date de la carte en Date
+const dateMatch: Date = new Date(card.date);
+##### Récupère l'année de la date de la carte
+const yearMatch: number = dateMatch.getFullYear();
+##### Test si l'année entrée et identique à l'année de la carte
+if (yearGuess === yearMatch) {
+  ...
+}
 
 ---
 
