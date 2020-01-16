@@ -10,7 +10,7 @@ import { Card } from '../card';
 })
 export class CardDetailComponent implements OnInit {
 
-  private cardForm;
+  cardForm;
   private cards: Card[];
 
   constructor(

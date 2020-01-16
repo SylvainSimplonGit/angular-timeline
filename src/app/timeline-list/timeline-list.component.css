@@ -8,18 +8,6 @@
   justify-content: space-evenly;
 }
 
-table,
-th,
-td {
-  border: 1px solid var(--color-light);
-  border-collapse: collapse;
-  background-color: var(--color-lighter);
-}
-
-th, td {
-  padding: 5px;
-}
-
 button {
   background-color: var(--color-dark);
   color: var(--color-lighter);

@@ -1,0 +1,39 @@
+input {
+  /* Centre le texte de l'input */
+  text-align: center;
+  margin: 0.5rem;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* flex-wrap: wrap; */
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  margin-top: 0.5rem;
+}
+
+.inputXSmall {
+  width: 100%;
+  max-width: 50px;
+  box-sizing: border-box;
+}
+
+.inputSmall {
+  width: 100%;
+  max-width: 200px;
+  box-sizing: border-box;
+}
+
+.inputLarge {
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+}
