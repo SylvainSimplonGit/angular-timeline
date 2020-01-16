@@ -21,7 +21,7 @@
         <td>{{ card.date | date : 'dd/MM/yyyy' }}</td>
         <td>{{ card.imageUrl }}</td>
         <td>{{ card.description }}</td>
-        <td><button (click)="cards.splice(i, 1)">Supprimer</button></td>
+        <td><button (click)="deleteItem(i)">Supprimer</button></td>
       </tr>
     </table>
   </section>

@@ -7,7 +7,8 @@ import { TimelineEditComponent } from '../timeline-edit/timeline-edit.component'
 
 const routes: Routes = [
   { path: '', component: TimelineListComponent},
-  { path: 'timeline/:timelineId', component: TimelineComponent},
+  // { path: 'timeline/:timelineId', component: TimelineComponent},
+  { path: 'timeline', component: TimelineComponent},
   // { path: 'edit/:timelineId', component: TimelineEditComponent},
   { path: 'edit', component: TimelineEditComponent},
 ];

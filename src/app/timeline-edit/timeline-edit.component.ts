@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Card } from '../card';
+import { CardService } from '../card.service';
 import { TimelineService } from '../timeline.service';
 
 @Component({
@@ -13,10 +14,16 @@ export class TimelineEditComponent implements OnInit {
 
   constructor(
     private timelineService: TimelineService,
+    private cardService: CardService,
   ) { }
 
   ngOnInit() {
     this.cards = this.timelineService.getTimeline().cardList;
+  }
+
+  deleteItem(ind) {
+    this.cards.splice(ind, 1);
+    this.cardService.setCardsUnfounded(this.cards);
   }
 
 }

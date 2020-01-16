@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ViewChild, ElementRef } from '@angular/core';
 import { Card } from '../card';
 import { CardService } from '../card.service';
-import { ActivatedRoute } from '@angular/router';
+// import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -12,32 +12,36 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TimelineComponent implements OnInit {
 
-  @ViewChild('dateInput', {static: false}) dateInput: ElementRef;
+  @ViewChild('dateInput', {static: false}) dateInputRequest: ElementRef;
 
   cardGuess: Card;
   cardsFounded: Card[];
   cardsUnfounded: Card[];
-  // nbCardsMax: number;
-  idCurrentTimeline: number;
+  // idCurrentTimeline: number;
   dynamicClass = '';
 
   constructor(
     private cardService: CardService,
-    private route: ActivatedRoute,
+    // private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.idCurrentTimeline = +params.get('timelineId'); // le '+' permet de transformer une string en number
-    });
+    // this.route.paramMap.subscribe(params => {
+    //   this.idCurrentTimeline = +params.get('timelineId'); // le '+' permet de transformer une string en number
+    // });
     this.cardGuess = this.cardService.getRandomCard();
     this.cardsFounded = this.cardService.getCardsFounded();
     this.cardsUnfounded = this.cardService.getCardsUnfounded();
   }
 
+  reset() {
+    this.cardService.initCards();
+    this.ngOnInit();
+  }
+
   guessCard(card: Card) {
     // Converti la date de l'input en number
-    const yearGuess: number = +this.dateInput.nativeElement.value;
+    const yearGuess: number = +this.dateInputRequest.nativeElement.value;
     // Converti la date de la carte en Date
     const dateMatch: Date = new Date(card.date);
     // Récupère l'année de la date de la carte
@@ -58,7 +62,7 @@ export class TimelineComponent implements OnInit {
         this.cardGuess = this.cardService.getRandomCard();
       }
       this.dynamicClass = '';
-      this.dateInput.nativeElement.value = '';
+      this.dateInputRequest.nativeElement.value = '';
     } else {
       this.dynamicClass = 'error';
     }

@@ -1,7 +1,7 @@
 <div class="list">
-  <div>
+  <!-- <div>
     <button id="buttonAdd" (click)="addTimeline()">Ajouter un timeline</button>
-  </div>
+  </div> -->
 
   <section id="table-view">
     <table>
@@ -27,7 +27,8 @@
         <td>{{ item.cardList.length }}</td>
         <!-- <td><button (click)="edit(item)" [routerLink]="['/edit', item.id]">Editer</button></td> -->
         <td><button (click)="edit(item)" [routerLink]="['/edit']">Editer</button></td>
-        <td><button [routerLink]="['/timeline', item.id]" *ngIf="item.cardList.length > 0">Jouer</button></td>
+        <!-- <td><button [routerLink]="['/timeline', item.id]" *ngIf="item.cardList.length > 0">Jouer</button></td> -->
+        <td><button (click)="play(item)" [routerLink]="['/timeline']" *ngIf="item.cardList.length > 0">Jouer</button></td>
         <td><button (click)="timelines.splice(i, 1)">Supprimer</button></td>
       </tr>
     </table>

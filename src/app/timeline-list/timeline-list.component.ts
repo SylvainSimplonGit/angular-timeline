@@ -25,9 +25,10 @@ export class TimelineListComponent implements OnInit {
     console.log('Edit : ' + timeline.name);
   }
 
-  // play(timeline) {
-  //   console.log('Play : ' + timeline.name);
-  // }
+  play(timeline) {
+    this.timelineService.setTimeline(timeline);
+    console.log('Play : ' + timeline.name);
+  }
 
   addTimeline() {
     // TODO

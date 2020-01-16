@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Timeline } from './timeline';
+import { CardService } from './card.service';
 
 @Injectable({
   providedIn: 'root'
@@ -83,7 +84,9 @@ export class TimelineService {
   items = [];
   timeline: Timeline;
 
-  constructor() {
+  constructor(
+    private cardService: CardService,
+  ) {
     this.items = this.timelines;
   }
 
@@ -95,11 +98,12 @@ export class TimelineService {
     this.items.push(item);
   }
 
-  setTimeline(item: Timeline){
+  setTimeline(item: Timeline) {
     this.timeline = item;
+    this.cardService.setCardsUnfounded(item.cardList);
   }
 
-  getTimeline(){
+  getTimeline() {
     console.log('edit -> ', this.timeline.name);
     return this.timeline;
   }
