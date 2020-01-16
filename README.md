@@ -29,15 +29,19 @@ Vous avez à votre disposition un [backend spring](https://github.com/simplonco/
 ## ToDo list
 
 - [x] pouvoir supprimer une carte sur l'édition des timelines
-- [ ] ajouter un formulaire pour ajouter une carte sur l'édition des timelines
+- [x] ajouter un formulaire pour ajouter une carte sur l'édition des timelines
 - [ ] ajouter un formulaire pour éditer les cartes d'un timeline
 - [ ] ajouter un formulaire pour ajouter un timeline
 - [ ] ajouter un formulaire pour éditer les carctéristiques d'un timeline
 - [x] créer un bouton 'Rejouer' pour resetter le jeu une fois gagner.
-  - [ ] le tableau de Card se remet à jour depuis le tableau contenu dans le card.service.ts et pas depuis le tableau modifié via le component timeline-edit
+  - [x] le tableau de Card se remet à jour depuis le tableau contenu dans le card.service.ts et pas depuis le tableau modifié via le component timeline-edit
 - [ ] resetter le jeu une fois gagné et quitté la page
 - [ ] récupérer les timelines depuis l'API
 - [ ] récupérer les cartes depuis l'API
+
+## Bug détecté(s)
+
+- [ ] si on commence à jouer et que l'on clique sur le bouton "Revenir à la liste des Timelines", puis que l'on clique sur le bouton "Jouer" du timeline précédent, l'ensemble des cartes du timeline est ajouté aux cartes à trouver en plus des cartes déjà trouvées.
 
 ## Récupération de l'application
 
