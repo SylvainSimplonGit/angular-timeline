@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Les certificats et leur utilité sur le Web</title>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="remark/remark-prez.css">
+    <link href="https://fonts.googleapis.com/css?family=Big+Shoulders+Text|Abel&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <textarea id="source">
+
+class: center, middle
+
+# Le projet Timeline
+
+![OutaTime](ressources/images/outatime.jpg)
+
+![Logo Simplon](ressources/images/logo_simplon.png)
+
+---
+# Les interfaces
+
+## Les interfaces utilisées
+
+.cols[
+.split_2[
+card.ts
+```typescript
+export interface Card {
+    id: number;
+    name: string;
+    date: Date;
+    imageUrl: string;
+    description: string;
+}
+```
+]
+
+.split_2[
+timeline.ts
+```typescript
+import { Card } from './card';
+
+export interface Timeline {
+  id: number;
+  name: string;
+  creationDate: Date;
+  updateDate: Date;
+  category: string;
+  cardList: Card[];
+}
+```
+]
+]
+
+---
+# le routing
+
+.cols[
+.split_3[
+app.module.ts
+```typescript
+import { 
+  AppRoutingModule
+ } from './app-routing/app-routing.module';
+...
+@NgModule({
+  declarations: [
+    ...
+  ],
+  imports: [
+    ...
+    AppRoutingModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+  
+```  
+]
+
+.split_3[
+app-routing.module.ts
+```typescript
+...
+import { 
+  Routes, RouterModule
+ } from '@angular/router';
+
+...
+import {
+  TimelineComponent
+ } from '../timeline/timeline.component';
+...
+const routes: Routes = [
+  { 
+    path: '', 
+    component: TimelineListComponent },
+  { 
+    path: 'timeline/:timelineId', 
+    component: TimelineComponent },
+  ...
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+```
+]
+
+.split_3[
+timeline.component.ts
+```typescript
+import { 
+  ActivatedRoute
+ } from '@angular/router';
+...
+constructor(
+    private route: ActivatedRoute,
+  ) { }
+...
+ngOnInit() {
+  this.route.paramMap.subscribe(params => {
+    this.idCurrentTimeline = 
+    // le '+' permet de transformer une
+    // string en number
+    +params.get('timelineId'); 
+  });
+}
+```
+]
+]
+---
+
+# La liste des Timelines
+
+## Exemple d'interpolation
+
+.cols[
+.split_2[
+![Timeline Liste](ressources/images/timeline-list.png)
+]
+
+.split_2[
+```html
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      ...
+    </tr>
+  </thead>
+  <tr *ngFor="let item of timelines; let i = index">
+    <td>{{ item.id }}</td>
+    ...
+  </tr>
+</table>
+```
+]
+]
+
+---
+
+# La liste des Timelines
+
+## Exemple de Property Binding
+
+.cols[
+.split_2[
+![Timeline Liste](ressources/images/timeline-list.png)
+]
+
+.split_2[
+```html
+<table>
+  <thead>
+    <tr>
+      ...
+      <th>Jouer ?</th>
+      ...
+    </tr>
+  </thead>
+  <tr *ngFor="let item of timelines; let i = index">
+    ...
+    <td>
+      <button 
+        [routerLink]="['/timeline', item.id]" 
+        *ngIf="item.cardList.length > 0">
+        Jouer
+      </button>
+    </td>
+    ...
+  </tr>
+</table>
+```
+]
+]
+
+---
+
+# La liste des Timelines
+
+## Exemple de Event Binding
+
+.cols[
+.split_2[
+![Timeline Liste](ressources/images/timeline-list.png)
+]
+
+.split_2[
+```html
+<table>
+  <thead>
+    <tr>
+      ...
+      <th>Supprimer ?</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let item of timelines; let i = index">
+    ...
+    <td>
+      <button 
+        (click)="timelines.splice(i, 1)">
+        Supprimer
+      </button>
+    </td>
+  </tr>
+</table>
+```
+]
+]
+
+---
+
+# La Timeline
+
+## Un exemple de view query : ViewChild
+
+.cols[
+.split_3[
+![Timeline Liste](ressources/images/timeline.png)
+]
+
+.split_3[
+timeline.component.html
+```html
+...
+<input #dateInput ... 
+  type="text" 
+  placeholder="Entrez la date">
+...
+```
+]
+
+.split_3[
+timeline.component.ts
+```typescript
+...
+import { ViewChild, ElementRef } from '@angular/core';
+...
+@ViewChild(
+  'dateInput', {static: false}
+  ) dateInput: ElementRef;
+...
+const yearGuess: number = 
+  +this.dateInput.nativeElement.value;
+...
+this.dateInput.nativeElement.value = '';
+```
+]
+]
+
+???
+
+---
+
+# La Timeline
+
+## Lorsqu'une carte est trouvée
+
+.cols[
+.split_3[
+![Timeline Liste](ressources/images/timeline-carte1.png)
+]
+
+.split_3[
+timeline.component.html
+```html
+<button 
+  id="buttonGuess" 
+  (click)="guessCard(cardGuess)">
+  DEVINER
+</button>
+```
+]
+
+.split_3[
+timeline.component.ts
+```typescript
+guessCard(card: Card) {
+  const yearGuess: number = +this.dateInput.nativeElement.value;
+  const dateMatch: Date = new Date(card.date);
+  const yearMatch: number = dateMatch.getFullYear();
+  if (yearGuess === yearMatch) {
+    this.cardService.findCard(card);
+    this.sortCardsFounded();
+    if (!this.haveNoCardInUnfounded()) {
+      this.cardGuess = this.cardService.getRandomCard();
+    }
+    this.dynamicClass = '';
+    this.dateInput.nativeElement.value = '';
+  } else {
+    this.dynamicClass = 'error';
+  }
+}
+
+haveNoCardInUnfounded(): boolean {
+  return !(this.cardsUnfounded.length > 0);
+}
+```
+]
+]
+
+???
+
+// Converti la date de l'input en number
+// Converti la date de la carte en Date
+// Converti la date de la carte en Date
+// Récupère l'année de la date de la carte
+// Test si l'année entrée et identique à l'année de la carte
+
+---
+
+# La Timeline
+
+## Le tri des cartes trouvées
+
+.cols[
+.split_2[
+timeline.component.html
+```html
+<div id="deckCardsFounded">
+  <div class="cards" *ngFor="let card of cardsFounded">
+    <div class="headerCard">
+      <h3>{{ card.name }}</h3>
+      <h4>{{ card.date | date : 'yyyy'}}</h4>
+    </div>
+    <div class="imageCard">
+      <img src="{{ card.imageUrl }}" alt="Carte trouvée n°{{ card.id }}">
+    </div>
+    <div class="descriptionCard">
+      <p>{{ card.description }}</p>
+    </div>
+  </div>
+</div>
+```
+]
+
+.split_2[
+timeline.component.ts
+```ts
+cardsFounded: Card[];
+
+ngOnInit() {
+  ...
+  this.cardsFounded = this.cardService.getCardsFounded();
+  ...
+}
+
+sortCardsFounded() {
+  this.cardsFounded.sort((card1, card2) => {
+    if (card1.date > card2.date) {
+      return 1;
+    } else if (card1.date < card2.date) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+}
+```
+]
+]
+
+---
+
+# La Timeline
+
+## Le KeyDown 'ENTER'
+
+.cols[
+.split_2[
+timeline.component.html
+```html
+<input ... type="text" 
+  placeholder="Entrez la date"
+  (keydown)="onKeydown($event, cardGuess)">
+    
+```
+]
+
+.split_2[
+timeline.component.ts
+```typescript
+onKeydown(event, card) {
+  if (event.key === 'Enter') {
+    this.guessCard(card);
+  }
+}
+```
+]
+]
+
+???
+
+Grâce à l'event binding 'keydown', il est possible :
+- d'executer une procédure
+- de récupérer un objet pour connaitre la touche pressée.
+
+Dans le component, dans la méthode executer via l'event binding, 
+on teste si la touche pressée est bien 'ENTER' pour executer la 
+méthode habituellement executer via le bouton 'DEVINER'
+
+---
+
+# CSS
+
+## Utiliser des variables dans le CSS
+
+.cols[
+.split_2[
+style.css
+```css
+:root {
+  --color-darker: #1b262c;
+  --color-dark: #0f4c75;
+  --color-lighter: #bbe1fa;
+  --color-light: #3282b8;
+}
+```
+]
+
+.split_2[
+top-bar.component.css
+```css
+.top-bar {
+  background-color: var(--color-lighter);
+  padding: 5px;
+}
+```
+]
+]
+
+---
+
+class: center, middle
+
+# Voici ce que cela donne !
+
+---
+
+class: center, middle
+
+# Merci !
+
+    </textarea>
+    <script src="remark/2019-10-remark.min.js"></script>
+    <!-- <script src="remark/mermaid.min.js"></script>
+    <link rel="stylesheet" href="remark/mermaid.css">
+    <script>
+        // mermaid.sequenceConfig = {
+        //     diagramMarginX:0,
+        //     diagramMarginY:10,
+            
+        //     boxTextMargin:5,
+        //     noteMargin:10,
+        //     messageMargin:35,
+        //     mirrorActors:true
+        // };
+        mermaid.initialize({
+            startOnLoad:true,
+            sequence:{
+                diagramMarginX:50,
+                // diagramMarginY:10,
+                // boxTextMargin:15,
+                noteMargin:10,
+                // messageMargin:70,
+                mirrorActors:true,
+                actorMargin: 200,
+                width: 350,
+                useMaxWidth: true
+            }
+        });
+    </script> -->
+    <script>
+        var slideshow = remark.create({
+            // Set the slideshow display ratio
+            // Default: '4:3'
+            // Alternatives: '16:9', ...
+            ratio: '16:9',
+
+            // Navigation options
+            navigation: {
+                // Enable or disable navigating using scroll
+                // Default: true
+                // Alternatives: false
+                scroll: true,
+
+                // Enable or disable navigation using touch
+                // Default: true
+                // Alternatives: false
+                touch: true,
+
+                // Enable or disable navigation using click
+                // Default: false
+                // Alternatives: true
+                click: false,
+            },
+
+            // Enable or disable counting of incremental slides in the slide counting
+            countIncrementalSlides: false,
+
+            // Code highlight style
+            highlightStyle: 'monokai',
+        });
+    </script>
+    <script src="remark/2019-10-last-heading.js"></script>
+</body>
+
+</html>
