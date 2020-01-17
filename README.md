@@ -7,8 +7,7 @@
 - [Installation de l'application](#installation-de-l'application)
 - [Environnement](#environnement)
 
-
-Vous connaissez le jeu timeline ? 
+Vous connaissez le jeu timeline ?
 
 C'est un jeu de carte où il faut trouver les dates d'événements ou d'inventions arrivés dans l'histoire. Ce brief vous propose de rendre ce jeu jouable en ligne !
 
@@ -42,6 +41,7 @@ Vous avez à votre disposition un [backend spring](https://github.com/simplonco/
 ## Bug détecté(s)
 
 - [ ] si on commence à jouer et que l'on clique sur le bouton "Revenir à la liste des Timelines", puis que l'on clique sur le bouton "Jouer" du timeline précédent, l'ensemble des cartes du timeline est ajouté aux cartes à trouver en plus des cartes déjà trouvées.
+  - [x] contournement : lors du clic sur le bouton "Revenir à la liste des Timelines", le timeline est initialisé (plus de cartes trouvées, elles sont toutes remises dans le tableau de cartes à trouver).
 
 ## Récupération de l'application
 
