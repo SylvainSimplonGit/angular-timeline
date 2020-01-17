@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ViewChild, ElementRef } from '@angular/core';
 import { Card } from '../card';
 import { CardService } from '../card.service';
+import { TimelineService } from '../timeline.service';
 // import { ActivatedRoute } from '@angular/router';
 
 
@@ -17,11 +18,12 @@ export class TimelineComponent implements OnInit {
   cardGuess: Card;
   cardsFounded: Card[];
   cardsUnfounded: Card[];
-  // idCurrentTimeline: number;
+  idCurrentTimeline: number;
   dynamicClass = '';
 
   constructor(
     private cardService: CardService,
+    private serviceTimeline: TimelineService,
     // private route: ActivatedRoute,
   ) { }
 
@@ -29,6 +31,12 @@ export class TimelineComponent implements OnInit {
     // this.route.paramMap.subscribe(params => {
     //   this.idCurrentTimeline = +params.get('timelineId'); // le '+' permet de transformer une string en number
     // });
+    // ALTERNATIVE :
+    // lors du clic sur le bouton "Revenir à la liste des Timelines", le timeline est initialisé
+    // (plus de cartes trouvées, elles sont toutes remises dans le tableau de cartes à trouver)
+    this.cardService.initCards();
+
+    this.idCurrentTimeline = this.serviceTimeline.getTimeline().id;
     this.cardGuess = this.cardService.getRandomCard();
     this.cardsFounded = this.cardService.getCardsFounded();
     this.cardsUnfounded = this.cardService.getCardsUnfounded();
