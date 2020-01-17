@@ -5,6 +5,7 @@
 - [ToDo list](#todo-list)
 - [Récupération de l'application](#récupération-de-l'application)
 - [Installation de l'application](#installation-de-l'application)
+- [Utilisation de l'application](#utilisation-de-l'application)
 - [Environnement](#environnement)
 
 Vous connaissez le jeu timeline ?
@@ -45,11 +46,59 @@ Vous avez à votre disposition un [backend spring](https://github.com/simplonco/
 
 ## Récupération de l'application
 
-*A rédiger*
+### Pré-requis
+
+Il est necessaire d'avoir d'installé sur son poste :
+
+- Git v2.23.0 ou supérieure
+
+### Récupération
+
+Dans le répertoire de votre choix, executez la commande suivante :
+
+```bash
+git clone https://github.com/SylvainSimplonGit/angular-timeline.git
+```
 
 ## Installation de l'application
 
-*A rédiger*
+### Pré-requis
+
+Il est necessaire d'avoir d'installé sur son poste :
+
+- Npm v6.13.4 ou supérieure
+
+### Installation
+
+Suite à la récupération de l'application, allez dans le repertoire créé précedemment `angular-timeline` via la commande :
+
+```bash
+cd angular-timeline
+```
+
+Et enfin, executer la commande suivante :
+
+```bash
+npm install
+```
+
+## Utilisation de l'application
+
+### Pré-requis
+
+Il est nécessaire d'avoir [récupéré](#récupération-de-l'application) puis [installé](#installation-de-l'application) l'application
+
+### Utilisation
+
+Pour utiliser l'application, il faut executer la commande suivante dans le répertoire `angular-timeline` :
+
+```bash
+ng serve --open
+```
+
+Votre navigateur par défaut s'ouvrira sur la page de l'application
+
+A vous de jouer !
 
 ## Environnement
 
@@ -58,23 +107,3 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ### Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-### Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-### Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-### Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-### Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-### Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
