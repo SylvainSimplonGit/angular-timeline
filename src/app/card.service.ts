@@ -107,11 +107,7 @@ export class CardService {
 
   initCards() {
     if (this.cardsUnfounded.length === 0) {
-      for (const card of this.cardsFounded) {
-        this.cardsUnfounded.push(card);
-      }
-    } else {
-
+      this.setCardsUnfounded(this.cardsFounded);
     }
     this.cardsFounded = [];
   }
