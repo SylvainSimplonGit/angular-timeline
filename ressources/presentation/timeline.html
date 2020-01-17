@@ -176,6 +176,9 @@ ngOnInit() {
 
 # Franck
 
+Template de la liste des Timelime utilise principalement 3 notions d'angular :
+- interpolation : permet d'afficher dans le html des attributs issus de module (ex. id du timeline)
+
 ---
 
 # La liste des Timelines
@@ -217,6 +220,8 @@ ngOnInit() {
 
 # Franck
 
+- property binding : permet d'interpréter une valeur comme balise html (ex.routerLink)
+
 ---
 
 # La liste des Timelines
@@ -254,6 +259,8 @@ ngOnInit() {
 ???
 
 # Franck
+
+- event binding : gestion d'event dans le html (ex.click)
 
 ---
 
@@ -364,7 +371,7 @@ haveNoCardInUnfounded(): boolean {
 
 # Sylvain
 
-##### Convertir la date de l'input en number
+##### Convertir la date de l'input en number grace à l'opérator unaire +
 const yearGuess: number = +this.dateInput.nativeElement.value;
 ##### Converti la date de la carte en Date
 const dateMatch: Date = new Date(card.date);
